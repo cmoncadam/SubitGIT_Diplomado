@@ -89,9 +89,9 @@ def Mostrar_venta():
     # print(ventas)
     for i in range(len(ventas)):
         print(ventas[i])
-    print("________________")
-    mejor_venta = max(ventas, key=lambda x: x[1])
-    print(" Mejor Venta:", mejor_venta[1])
+        print("________________")
+        mejor_venta = max(ventas, key=lambda x: x[1])
+        print(" Mejor Venta:", mejor_venta[1])
 
 
 # Funcion agregar inventario
