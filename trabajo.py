@@ -87,14 +87,19 @@ def Mostrar_inventario():
 # Funcion listar ventas y mostrar la venta con mayor ganancia
 def Mostrar_venta():
     # print(ventas)
+    van = 0
     for i in range(len(ventas)):
         print(ventas[i])
-        print("________________")
         mejor_venta = max(ventas, key=lambda x: x[1])
+        van = + 1
+    if van == 0:
+        print("No se registran ventas")
+    else:
         print(" Mejor Venta:", mejor_venta[1])
 
-
 # Funcion agregar inventario
+
+
 def Agregar_Articulo(producto_A, cantidad_A, precio_A):
     # Validar si el producto existe
     for i, (producto, cantidad, precio) in enumerate(inventario):
