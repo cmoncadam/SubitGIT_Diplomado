@@ -30,7 +30,7 @@
     inventario, incluyendo el total de productos, productos más vendidos, productos con stock
     bajo, etc
 """
-
+import os
 # lista inventario almacenar el invetario en memoria producto, cantidad y precio
 inventario = []
 
@@ -42,6 +42,7 @@ ventas = []
 
 def Tienda():
     while True:
+        os.system('cls')
         print("\nTienda de regalos GIFTY, seleccione una OPCION para continuar")
         print("_______________________________________________________________")
         print("1. Mostrar inventario")
@@ -53,18 +54,22 @@ def Tienda():
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
+            os.system('cls')
             Mostrar_inventario()
 
         elif opcion == "2":
+            os.system('cls')
             Mostrar_venta()
 
         elif opcion == "3":
+            os.system('cls')
             producto = input("Ingrese el nombre del artículo: ")
             cantidad = int(input("Ingrese la cantidad a agregar: "))
             precio = int(input("Ingrese precio unitario : "))
             Agregar_Articulo(producto, cantidad, precio)
 
         elif opcion == "4":
+            os.system('cls')
             producto = input("Ingrese el nombre del artículo a vender: ")
             cantidad = int(input("Ingrese la cantidad a vender: "))
             Vender_Articulo(producto, cantidad)
@@ -80,13 +85,21 @@ def Tienda():
 # Funcion listar inventario
 def Mostrar_inventario():
     # print(inventario)
+    os.system('cls')
+    print('Inventario')
     for i in range(len(inventario)):
         print(inventario[i])
+
+    if(len(inventario) == 0) :
+        print('No existen productos registrados')
+    tash = input('Pulse una tecla para continuar...')
 
 
 # Funcion listar ventas y mostrar la venta con mayor ganancia
 def Mostrar_venta():
-    # print(ventas)
+    # print(ventas)    
+    os.system('cls')
+    print('Ventas del día')
     van = 0
     for i in range(len(ventas)):
         print(ventas[i])
@@ -96,6 +109,8 @@ def Mostrar_venta():
         print("No se registran ventas")
     else:
         print(" Mejor Venta:", mejor_venta[1])
+    
+    tash = input('Pulse una tecla para continuar...')
 
 # Funcion agregar inventario
 
@@ -118,13 +133,15 @@ def Agregar_Articulo(producto_A, cantidad_A, precio_A):
         producto = producto_A
         cantidad = cantidad_A
         precio = precio_A
+        os.system('cls')
 
         print("Nuevo producto :", producto)
         print("Cantidad :", cantidad)
         print("Precio $:", precio)
 
         inventario.append((producto, cantidad, precio))
-
+    print('Producto agregado')
+    tash = input('Pulse una tecla para continuar...')
 
 # Funcion vender inventario
 def Vender_Articulo(producto_V, cantidad_V):
