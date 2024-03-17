@@ -43,6 +43,8 @@ ventas = []
 def Tienda():
     while True:
         os.system('cls')
+        
+        print("_______________________________________________________________")
         print("\nTienda de regalos GIFTY, seleccione una OPCION para continuar")
         print("_______________________________________________________________")
         print("1. Mostrar inventario")
@@ -54,11 +56,9 @@ def Tienda():
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
-            os.system('cls')
             Mostrar_inventario()
 
         elif opcion == "2":
-            os.system('cls')
             Mostrar_venta()
 
         elif opcion == "3":
@@ -67,39 +67,38 @@ def Tienda():
             cantidad = int(input("Ingrese la cantidad a agregar: "))
             precio = int(input("Ingrese precio unitario : "))
             Agregar_Articulo(producto, cantidad, precio)
-
-        elif opcion == "4":
+        elif opcion == "4":            
             os.system('cls')
             producto = input("Ingrese el nombre del artículo a vender: ")
             cantidad = int(input("Ingrese la cantidad a vender: "))
             Vender_Articulo(producto, cantidad)
-
         elif opcion == "5":
             print("Salir")
             break
 
         else:
+            os.system('cls')
             print("Opción no válida. Intente de nuevo.")
+            input('Pulse una tecla para continuar...')
 
 
 # Funcion listar inventario
 def Mostrar_inventario():
-    # print(inventario)
+    
     os.system('cls')
     print('Inventario')
+    print("_______________________________________________________________")
     for i in range(len(inventario)):
         print(inventario[i])
-
-    if(len(inventario) == 0) :
-        print('No existen productos registrados')
-    tash = input('Pulse una tecla para continuar...')
-
+    if len(inventario) == 0:
+        print("No se registran productos")
+    input('Pulse una tecla para continuar...')
 
 # Funcion listar ventas y mostrar la venta con mayor ganancia
 def Mostrar_venta():
-    # print(ventas)    
     os.system('cls')
-    print('Ventas del día')
+    print('Ventas')
+    print("_______________________________________________________________")
     van = 0
     for i in range(len(ventas)):
         print(ventas[i])
@@ -109,9 +108,7 @@ def Mostrar_venta():
         print("No se registran ventas")
     else:
         print(" Mejor Venta:", mejor_venta[1])
-    
-    tash = input('Pulse una tecla para continuar...')
-
+    input('Pulse una tecla para continuar...')
 # Funcion agregar inventario
 
 
@@ -134,14 +131,12 @@ def Agregar_Articulo(producto_A, cantidad_A, precio_A):
         cantidad = cantidad_A
         precio = precio_A
         os.system('cls')
-
         print("Nuevo producto :", producto)
         print("Cantidad :", cantidad)
         print("Precio $:", precio)
 
         inventario.append((producto, cantidad, precio))
-    print('Producto agregado')
-    tash = input('Pulse una tecla para continuar...')
+        input('Pulse una tecla para continuar...')
 
 # Funcion vender inventario
 def Vender_Articulo(producto_V, cantidad_V):
@@ -156,6 +151,7 @@ def Vender_Articulo(producto_V, cantidad_V):
 
             if (nuevo_inventario < 0):
                 print("inventario insuficiente")
+                input('Pulse una tecla para continuar...')
                 break
             else:
                 venta = cantidad_V * precio
@@ -163,9 +159,11 @@ def Vender_Articulo(producto_V, cantidad_V):
                 inventario[i] = (producto, nuevo_inventario, precio)
 
                 ventas.append((producto, venta))
+                input('Pulse una tecla para continuar...')
                 break
     else:
         print("Producto no encontrado")
+        input('Pulse una tecla para continuar...')
 
 
 Tienda()
